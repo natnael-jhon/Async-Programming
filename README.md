@@ -16,7 +16,7 @@ Asynchronous programming in JavaScript allows for non-blocking operations, impro
 
 ## Examples 💻
 
-Find examples and tutorials in the `examples` directory.
+Find examples and tutorials in  `All` directorys.
 
 ## Contributing 🤝
 
