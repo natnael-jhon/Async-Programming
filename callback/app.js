@@ -26,17 +26,33 @@ document.querySelector("button").addEventListener("click", () => {
 // EXAMPLE 2
 
 
-function adder(callback, x, y){
-    let total = x + y;
-    callback(total)
+// function adder(callback, x, y){
+//     let total = x + y;
+//     callback(total)
+// }
+
+// function consoleLog(t){ // it doesnt matter what we add to consoleLog(value) 
+//     return t;
+// }
+
+// adder(displayPage, 3, 4)
+
+// function displayPage(result){
+//     document.querySelector("h1").innerText = result;
+// }
+
+// EXAMPLE 3
+
+function main1(name, callback){
+    setTimeout(() => {
+        console.log(name)
+        callback();
+    }, 2000);
 }
 
-function consoleLog(t){ // it doesnt matter what we add to consoleLog(value) 
-    return t;
-}
-
-adder(displayPage, 3, 4)
-
-function displayPage(result){
-    document.querySelector("h1").innerText = result;
+function main2(callback){
+    setTimeout(() => {
+        console.log("inside main2")
+        callback();
+    }, 2000);
 }
