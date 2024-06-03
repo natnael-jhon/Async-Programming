@@ -57,7 +57,7 @@ function getUserHobbies() {
 
 async function showUserHobbies() {
   try {
-    const name = await getUserDataFromDB("HuXn");
+    const name = await getUserDataFromDB("NaTi");
     const hobby = await getUserHobbies(name);
     console.log(hobby);
   } catch (error) {
