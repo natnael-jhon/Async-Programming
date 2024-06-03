@@ -1,51 +1,41 @@
-function checkNum(number) {
+function checkNum(no){
   return new Promise((resolve, reject) => {
-    if (number % 2 === 0) {
-      resolve(`${number} is an even number.`);
-    } else {
-      reject(`${number} is an odd number`);
-    }
-  });
+    no % 2 == 0 ? resolve(`${no} is even`) : reject(`${no} is odd`)
+  })
+}
+// checkNum(4).then(mis => console.log(`win: ${mis}`)).catch(function(mis){`err: ${mis}`})
+
+// refactoring the previous code from the callbackhell fun using promises
+
+function fetchData(){
+  return new Promise((resolve) => {
+    setTimeout(() =>{
+      const data = `Inside (callbackhell)`
+      console.log(data)
+      resolve(data)
+    }, 2000)
+  })
 }
 
-// const sampelNumber = 3;
-// checkNum(sampelNumber).then((message) => {
-//   console.log(`Success: ${message}`)
-// }).catch((error) => {
-//   console.log(`Error: ${error} `)
-// })
-
-// Refactoring the code we used in callback hell using promises
-
-function callbackHell(callback) {
+function firstFunc(data){
   return new Promise((resolve) => {
     setTimeout(() => {
-      const data = `Inside (callbackhell) function`;
-      console.log(data);
-      resolve(data);
+      const processedData = `${data} - Processed data1`
+      console.log(`Inside (firstFunc)`)
+      resolve(processedData)
     }, 2000);
-  });
+  })
 }
 
-function firstFunc(data) {
-  return new Promise((resolve, reject) => {
+function secondFunc(data){
+  return new Promise((resolve) => {
     setTimeout(() => {
-      const processedData = `${data} - Processed data`;
-      console.log("Inside (firstFunc) function");
-      resolve(processedData);
-    }, 2000);
-  });
+      const processedData = `${data} - Processed data2`
+      console.log(`Inside (Second func)`)
+      resolve(processedData)
+    }, 1500);
+  })
 }
 
-function secondFunc(data) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const processedData = `${data} - Processed data`;
-      console.log("Inside (secondFunc) function");
-      resolve(processedData);
-    }, 2000);
-  });
-}
-
-
-callbackHell().then((data) => firstFunc(data)).then((processedData1) => secondFunc(processedData1)).then(processedData2 => console.log(`Final result of all function with promises: ${processedData2}`)).catch(error => console.log(`Error: ${error}`))
+fetchData().then(n => firstFunc(n)).then(n1 => secondFunc(n1))
+.then(n2 => console.log(`${n2} final func`)).catch((err) => console.log(err))
