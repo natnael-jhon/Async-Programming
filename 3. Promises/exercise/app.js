@@ -43,6 +43,7 @@ function getUserHobbies() {
     setTimeout(() => {
       console.log("Getting user hobbies...");
       resolve(["Football", "Singing", "Solving Math"]);
+      reject("nigga u made an error")
     }, 2000);
   });
 }
@@ -50,7 +51,7 @@ function getUserHobbies() {
 getUserDataFromDB("HuXn")
   .then((name) => getUserHobbies(name))
   .then((hobby) => console.log(hobby))
-  .catch((err) => console.log(err));
+  .catch((error) => console.log(error));
 
 console.log("End");
 // ---------------------------
